@@ -27,7 +27,6 @@ protocols: [ HTTP ]
         description: a solidity source main file
         required: false
         type: string
-        example: "src=contract C{}"
       main:
         description: a solidity source main file
         required: false
@@ -330,11 +329,11 @@ protocols: [ HTTP ]
     handler:  SolcR
   post:
     description: Compiles solidity files.
+    body:
       src:
         description: a solidity source main file
         required: false
         type: string
-        example: "src=contract C{}"
       main:
         description: a solidity source main file
         required: false
