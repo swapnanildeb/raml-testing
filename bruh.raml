@@ -23,11 +23,11 @@ protocols: [ HTTP ]
   post: 
     description: Get the symbol table associated with a solidity source file.
     queryParameters:
-      source:
+      src:
         description: a solidity source main file
         required: false
         type: string
-        example: "source=contract C{}"
+        example: "src=contract C{}"
       main:
         description: a solidity source main file
         required: false
@@ -331,11 +331,11 @@ protocols: [ HTTP ]
   post:
     description: Compiles solidity files.
     body:
-      source:
+      src:
         description: a solidity source main file
         required: false
         type: string
-        example: "source=contract C{}"
+        example: "src=contract C{}"
       main:
         description: a solidity source main file
         required: false
