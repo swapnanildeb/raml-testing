@@ -5,8 +5,7 @@ version: v1.2
 protocols: [ HTTP ]
 
 /faucet:
-  description: | 
-    handler: FaucetR
+  description: |
   post: 
     description: Claim ether from the faucet
     queryParameters:
@@ -19,7 +18,6 @@ protocols: [ HTTP ]
 
 /extabi:
   description: |
-    handler: ExtABIR
   post: 
     description: Get the symbol table associated with a solidity source file.
     queryParameters:
@@ -43,19 +41,16 @@ protocols: [ HTTP ]
 
 /stats:
   /difficulty:
-    description: |
-      handler: StatDiffR
+    description: 
     get:
       description: Get the current total difficulty on the blockchain
   /totaltx:
     description: |
-      handler: StatTxR
     get:
       description: Get the current total number of transactions on the blockchain
 
 /block:
   description: |
-    handler: BlockInfoR
   get:
     description: Query the blocks
     responses:
@@ -162,14 +157,12 @@ protocols: [ HTTP ]
 
   /last:
     /{Integer}:
-      description: |
-        handler: BlkLastR
+      description: 
       get:
         description: Get the last number of blocks
 
 /log:
-  description: |
-    handler: LogInfoR
+  description: 
   get:
     description: Query logs
     queryParameters:
@@ -187,8 +180,7 @@ protocols: [ HTTP ]
         example: 15de68788d01b2504df8234cb4721c54ed567305
 
 /account:
-  description: |
-    handler: AccountInfoR
+  description: 
   get:
     description: Query the accounts
     queryParameters:
@@ -226,8 +218,7 @@ protocols: [ HTTP ]
         example: 15de68788d01b2504df8234cb4721c54ed567305
 
 /transaction:
-  description: |
-    handler: TransactionR
+  description:
   get:
     description: Query the transaction
     queryParameters:
@@ -301,32 +292,27 @@ protocols: [ HTTP ]
 #          description: Get the status of a transaction by the SHA
   /last:
     /{Integer}:
-      description: |
-        handler: TxLastR
+      description: 
       get:
         description: Get the last number of transactions
     /queued:
-      description: |
-        handler: QueuedTransactionsR
+      description: 
       get:
         description: Get queued (unprocessed) transactions
 
 /transactionResult:
     /{SHA}:
-      description: |
-        handler: TransactionResultR
+      description: 
       get:
         description: Get the status of a transaction by the SHA
 
 /storage:
-  description: |
-    handler: StorageInfoR
+  description: 
   get:
    description: Query the storage
 
 /register: 
-  description: | 
-    handler: RegisterAppR
+  description: 
   get:
     description: Confirm that the developer registered an app.
     queryParameters:
@@ -364,27 +350,23 @@ protocols: [ HTTP ]
         type: string
 
 /login:
-  description: |
-    handler: LoginR
+  description: 
   post:
     description: 
 
 /wallet:
-  description: |
-    handler: WalletR
+  description: 
   get:
     description:
   post:
     description:
 
 /developer:
-  description: |
-    handler: DeveloperR
+  description: 
   post:
     description:
 
 /coinbase:
-  description: |
-    handler: CoinbaseR
+  description: 
   get:
     description: Get the mining coinbase of the peer
