@@ -1,0 +1,899 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "",
+    "title": "BlockApps API v1.2",
+    "license": {
+      "name": "MIT",
+      "url": "http://github.com/gruntjs/grunt/blob/master/LICENSE-MIT"
+    }
+  },
+  "host": "hacknet.blockapps.net",
+  "basePath": "/eth/%7Bversion%7D",
+  "securityDefinitions": {},
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/faucet": {
+      "post": {
+        "description": "Claim ether from the faucet",
+        "tags": [
+          "faucet"
+        ],
+        "operationId": "Create_Faucet_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "address",
+            "in": "query",
+            "required": true,
+            "x-is-map": false,
+            "type": "string",
+            "description": "the hex encoded address"
+          },
+          {
+            "name": "responses",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/extabi": {
+      "post": {
+        "description": "Get the symbol table associated with a solidity source file.",
+        "tags": [
+          "extabi"
+        ],
+        "operationId": "Create_Extabi_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "src",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": "a solidity source main file"
+          },
+          {
+            "name": "main",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "file",
+            "format": "file",
+            "description": "a solidity source main file"
+          },
+          {
+            "name": "import",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "file",
+            "format": "file",
+            "description": "a solidity source file imported by a main file"
+          },
+          {
+            "name": "responses",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/stats/difficulty": {
+      "get": {
+        "description": "Get the current total difficulty on the blockchain",
+        "tags": [
+          "stats"
+        ],
+        "operationId": "Get_StatsDifficulty_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/stats/totaltx": {
+      "get": {
+        "description": "Get the current total number of transactions on the blockchain",
+        "tags": [
+          "stats"
+        ],
+        "operationId": "Get_StatsTotaltx_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/block/last/{Integer}": {
+      "get": {
+        "description": "Get the last number of blocks",
+        "tags": [
+          "block"
+        ],
+        "operationId": "Get_BlockLastByInteger_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Integer",
+            "in": "path",
+            "required": true,
+            "x-is-map": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/block": {
+      "get": {
+        "description": "Query the blocks",
+        "tags": [
+          "block"
+        ],
+        "operationId": "Get_Block_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "index",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "integer",
+            "format": "int32",
+            "description": "Block number to offset from"
+          },
+          {
+            "name": "number",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "integer",
+            "format": "int32",
+            "description": "The block number"
+          },
+          {
+            "name": "minnumber",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "integer",
+            "format": "int32",
+            "description": "The minimum block number"
+          },
+          {
+            "name": "maxnumber",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "integer",
+            "format": "int32",
+            "description": "The maximum block number"
+          },
+          {
+            "name": "gaslim",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "integer",
+            "format": "int32",
+            "description": "Gaslimit for block"
+          },
+          {
+            "name": "mingaslim",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "integer",
+            "format": "int32",
+            "description": "Minimum gaslimit for block"
+          },
+          {
+            "name": "maxgaslim",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "integer",
+            "format": "int32",
+            "description": "Maximum gaslimit for block"
+          },
+          {
+            "name": "gasused",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "integer",
+            "format": "int32",
+            "description": "Gas used for block"
+          },
+          {
+            "name": "mingasused",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "integer",
+            "format": "int32",
+            "description": "Minumum as used for block"
+          },
+          {
+            "name": "maxgasused",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "integer",
+            "format": "int32",
+            "description": "Maximum gas used for block"
+          },
+          {
+            "name": "diff",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "integer",
+            "format": "int32",
+            "description": "Block difficulty"
+          },
+          {
+            "name": "mindiff",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "integer",
+            "format": "int32",
+            "description": "Minimum block difficulty"
+          },
+          {
+            "name": "maxdiff",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "integer",
+            "format": "int32",
+            "description": "Maximum block difficulty"
+          },
+          {
+            "name": "txaddress",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": "TODO"
+          },
+          {
+            "name": "address",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": "Block contains address"
+          },
+          {
+            "name": "hash",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": "The hash of the block"
+          },
+          {
+            "name": "coinbase",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": "The address that mined the block"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/log": {
+      "get": {
+        "description": "Query logs",
+        "tags": [
+          "log"
+        ],
+        "operationId": "Get_Log_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "index",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "integer",
+            "format": "int32",
+            "description": "Tabular index offset"
+          },
+          {
+            "name": "hash",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "integer",
+            "format": "int32",
+            "description": "Transaction hash"
+          },
+          {
+            "name": "address",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": "The address associated with the log"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/account": {
+      "get": {
+        "description": "Query the accounts",
+        "tags": [
+          "account"
+        ],
+        "operationId": "Get_Account_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "index",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": "Lexigraphical index for address. Results are offset from this value."
+          },
+          {
+            "name": "balance",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "integer",
+            "format": "int32",
+            "description": "The balance of the account in wei"
+          },
+          {
+            "name": "minbalance",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "integer",
+            "format": "int32",
+            "description": "The minimum balance of the account in wei"
+          },
+          {
+            "name": "maxbalance",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "integer",
+            "format": "int32",
+            "description": "The maximumbalance of the account in wei"
+          },
+          {
+            "name": "nonce",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "integer",
+            "format": "int32",
+            "description": "The nonce, denoting the number of times the address has been invoked"
+          },
+          {
+            "name": "minnonce",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "integer",
+            "format": "int32",
+            "description": "The minimum nonce, denoting the number of times the address has been invoked"
+          },
+          {
+            "name": "maxnonce",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "integer",
+            "format": "int32",
+            "description": "The maximum nonce, denoting the number of times the address has been invoked"
+          },
+          {
+            "name": "address",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": "The address of the account"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/transaction/last/{Integer}": {
+      "get": {
+        "description": "Get the last number of transactions",
+        "tags": [
+          "transaction"
+        ],
+        "operationId": "Get_TransactionLastByInteger_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Integer",
+            "in": "path",
+            "required": true,
+            "x-is-map": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/transaction/last/queued": {
+      "get": {
+        "description": "Get queued (unprocessed) transactions",
+        "tags": [
+          "transaction"
+        ],
+        "operationId": "Get_TransactionLastQueued_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/transaction": {
+      "get": {
+        "description": "Query the transaction",
+        "tags": [
+          "transaction"
+        ],
+        "operationId": "Get_Transaction_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "index",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "integer",
+            "format": "int32",
+            "description": "Transactions are offset from this block number"
+          },
+          {
+            "name": "blocknumber",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "integer",
+            "format": "int32",
+            "description": "The blocknumber for the transaction"
+          },
+          {
+            "name": "from",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": "Transactions from this address"
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": "Transactions to this address"
+          },
+          {
+            "name": "address",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": "Transactions from or to this address"
+          },
+          {
+            "name": "value",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "integer",
+            "format": "int32",
+            "description": "The value transmitted by the transaction"
+          },
+          {
+            "name": "minvalue",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "integer",
+            "format": "int32",
+            "description": "The minimum value transmitted by the transaction"
+          },
+          {
+            "name": "maxvalue",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "integer",
+            "format": "int32",
+            "description": "The maximum value transmitted by the transaction"
+          },
+          {
+            "name": "gasprice",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "integer",
+            "format": "int32",
+            "description": "The gasprice for this transaction"
+          },
+          {
+            "name": "mingasprice",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "integer",
+            "format": "int32",
+            "description": "The minimum gasprice for this transaction"
+          },
+          {
+            "name": "maxgasprice",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "integer",
+            "format": "int32",
+            "description": "The maximum gasprice for this transaction"
+          },
+          {
+            "name": "gaslimit",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "integer",
+            "format": "int32",
+            "description": "The gaslimit set for this transaction"
+          },
+          {
+            "name": "mingaslimit",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "integer",
+            "format": "int32",
+            "description": "The minimum gaslimit for this transaction"
+          },
+          {
+            "name": "maxgaslimit",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "integer",
+            "format": "int32",
+            "description": "The maximum gaslimit for this transaction"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "transaction"
+        ],
+        "operationId": "Create_Transaction_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/transactionResult/{SHA}": {
+      "get": {
+        "description": "Get the status of a transaction by the SHA",
+        "tags": [
+          "transactionResult"
+        ],
+        "operationId": "Get_TransactionResultBySHA_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "SHA",
+            "in": "path",
+            "required": true,
+            "x-is-map": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/storage": {
+      "get": {
+        "description": "Query the storage",
+        "tags": [
+          "storage"
+        ],
+        "operationId": "Get_Storage_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/register": {
+      "get": {
+        "description": "Confirm that the developer registered an app.",
+        "tags": [
+          "register"
+        ],
+        "operationId": "Get_Register_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "p",
+            "in": "query",
+            "required": true,
+            "x-is-map": false,
+            "type": "string",
+            "description": "unique id sent the developer in an email."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      },
+      "post": {
+        "description": "Register a new application.",
+        "tags": [
+          "register"
+        ],
+        "operationId": "Create_Register_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "app",
+            "in": "query",
+            "required": true,
+            "x-is-map": false,
+            "type": "string",
+            "description": "the name of the application being registered."
+          },
+          {
+            "name": "developer",
+            "in": "query",
+            "required": true,
+            "x-is-map": false,
+            "type": "string",
+            "description": "the name of the developer."
+          },
+          {
+            "name": "email",
+            "in": "query",
+            "required": true,
+            "x-is-map": false,
+            "type": "string",
+            "description": "the developer's email. This acts, in practice, as the developer's unique id."
+          },
+          {
+            "name": "appurl",
+            "in": "query",
+            "required": true,
+            "x-is-map": false,
+            "type": "string",
+            "description": "the URL of the app."
+          },
+          {
+            "name": "repourl",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": "the repo of the app."
+          },
+          {
+            "name": "loginpass",
+            "in": "query",
+            "required": true,
+            "x-is-map": false,
+            "type": "string",
+            "description": "the password associated with the developer account."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/login": {
+      "post": {
+        "tags": [
+          "login"
+        ],
+        "operationId": "Create_Login_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/wallet": {
+      "get": {
+        "tags": [
+          "wallet"
+        ],
+        "operationId": "Get_Wallet_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "wallet"
+        ],
+        "operationId": "Create_Wallet_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/developer": {
+      "post": {
+        "tags": [
+          "developer"
+        ],
+        "operationId": "Create_Developer_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/coinbase": {
+      "get": {
+        "description": "Get the mining coinbase of the peer",
+        "tags": [
+          "coinbase"
+        ],
+        "operationId": "Get_Coinbase_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    }
+  }
+}
